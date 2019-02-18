@@ -1,0 +1,32 @@
+= Java Design Patterns
+
+Course work and notes from https://www.udemy.com/design-patterns-java/[Udemy -- Design Patterns in Java] by Dmitri Nesteruk
+
+== src/Adapter.java[Adapter]
+Using aggregation, create a component that looks like (adapts to) another interface
+
+== src/Bridge[Bridge]
+Connecting components with abstraction.  Avoid cartesian product of classes by injecting an interface implementation
+
+== Composite
+Use the same interface for singles and collections (e.g. Shape box and group)
+
+== Decorator
+Extend an object using composition.  Often, methods may be forwarded to decorated object
+
+== Facade
+Provide a simple interface that wraps one or more complex objects.  Argument defaulting may be applied
+
+== Flyweight
+Reduce memory by storing data patterns instead of repeated data (e.g. boolean array vs. ranges of settings)
+
+== Interpreter
+Convert text into objects using a two step Lexer then Parser
+
+== Iterator
+A stateful object to help iterate on a collection.  Implements next() and hasNext()
+
+== Mediator
+Funnel all communication throuh an object (e.g. a chatroom funnels all user communication - no direct communication)
+
+ 
