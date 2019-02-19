@@ -1,36 +1,137 @@
 = Java Design Patterns
 
-Course work and notes from https://www.udemy.com/design-patterns-java/[Udemy -- Design Patterns in Java] by Dmitri Nesteruk
+Course work and notes from https://www.udemy.com/design-patterns-java/[Design Patterns in Java] by Dmitri Nesteruk.  
+Generally follows the patterns established by the Gang of Four.
+Really great class! 
 
-== link:src/Adapter.java[Adapter]
+
+== SOLID
+Collection of key design principles coined by Uncle Bob.
+
+=== **S**ingle Responsibility Principle (SRP)
+A class should have only one purpose to change
+
+=== **O**pen/Closed Principle (OCP)
+A class should be open to extension, but closed to change.
+Once a class is in production, it should be complete and never change.
+
+=== **L**iskov Substition Principle (LSP)
+It should always be possible to replace a subclass with a parent class.
+Methods should still make sense.
+
+=== **I**nterface Segration Principle (ISP)
+Avoid large interfaces.
+Don't give API users more than they need.
+
+=== **D**ependency Inversion Principle (DIP)
+High level modules should not depend on low level modules.
+Both should depend on abstractions (interfaces).
+
+Abstractions should not depend on details.
+Details should depend on abstractions.
+
+
+== Creational
+
+=== link:src/Builder.java[Builder]
+Support creation of complex (likely immutable) objects with lots of fields by creating another Builder.
+Classic implementation StringBuilder.
+
+=== link:src/Factory.java[Factory]
+Avoid using new.
+Use a Factory instead.
+
+=== link:src/FluentInheritance.java[Fluent Inheritance]
+Builders often employ fluent interfaces.
+Using Java templates, inheritance can be used to keep code DRY (Don't Repeat Yourself)
+
+=== link:src/Prototype.java[Prototype]
+Create a copy of an object (often deep-copy).  
+Don't use Object.clone().
+Deep copy can often implemented using Serialize
+
+=== link:src/Singleton.java[Singleton]
+An object for which there is only one.
+Typically, a static getter is implemented.
+Lazy intitialization can be useful.
+
+
+== Structural
+
+=== link:src/Adapter.java[Adapter]
 Using aggregation, create a component that looks like (adapts to) another interface
 
-== link:src/Bridge[Bridge]
-Connecting components with abstraction.  Avoid cartesian product of classes by injecting an interface implementation
+=== link:src/Bridge[Bridge]
+Connecting components with abstraction.  
+Avoid cartesian product of classes by injecting an interface implementation
 
-== link:src/Composite.java[Composite]
+=== link:src/Decorator.java[Decorator]
+Extend an object using composition.  
+Often, methods may be forwarded to decorated object
+
+=== link:src/Facade.java[Facade]
+Provide a simple interface that wraps one or more complex objects.  
+Argument defaulting may be applied.
+
+=== link:src/Flyweight.java[Flyweight]
+Reduce memory by storing data patterns instead of repeated data (e.g. boolean array vs. ranges of settings).
+
+=== link:src/Proxy.java[Proxy]
+Adjust behavior of underlying object.
+Similar to Decorator which is meant to extends.
+Proxy is meant to change behavior (e.g. add logging or caching).
+
+== Behavioral
+
+=== link:src/ChainOfResponsibility.java[Composite]
+A chain of references that are applied in order.
+The output of the previous may be passed to the next.
+
+=== link:src/Composite.java[Composite]
 Use the same interface for singles and collections (e.g. Shape box and group)
 
-== Decorator
-Extend an object using composition.  Often, methods may be forwarded to decorated object
+=== link:src/Interpreter.java[Interpreter]
+Convert text into objects using a two step Lexer then Parser.
+Suggested to use a library for this (e.g. ANTLR).
 
-== Facade
-Provide a simple interface that wraps one or more complex objects.  Argument defaulting may be applied
+=== link:src/Iterator.java[Iterator]
+A stateful object to help iterate on a collection.  
+Implements next() and hasNext().
 
-== Flyweight
-Reduce memory by storing data patterns instead of repeated data (e.g. boolean array vs. ranges of settings)
+=== link:src/Mediator.java[Mediator]
+Funnel all communication throuh an object (e.g. a chatroom funnels all user communication - no direct communication).
 
-== Interpreter
-Convert text into objects using a two step Lexer then Parser
+=== link:src/Memento.java[Memento]
+A object used to rollback to a previous state.  
+Related to Command.
 
-== Iterator
-A stateful object to help iterate on a collection.  Implements next() and hasNext()
+=== link:src/NullObject.java[Null Object]
+A implementation of an interface which does the minimum possible.
+Used when the interface behavior is not desired. 
 
-== Mediator
-Funnel all communication throuh an object (e.g. a chatroom funnels all user communication - no direct communication)
+=== link:src/Observer.java[Oberver]
+An object (observer) that receives notifications/events from the observed and can act on it.  
+Commonly used in MVC via the controller.
 
-== Memento
-A object used to rollback to a previous state.  Related to Command
+=== link:src/State.java[State]
+A mutable object that is changed with Triggers via a finite number of States.
+There's often a map from current State to Trigger and next State.
+State can be an Enum or mapped to distint classes (classic Gang of Four example).
+Related to Finite State Machine.
+Suggested to use a library for this (e.g. Spring StateMachine).
 
-== Null Object
- 
+=== link:src/Strategy.java[Strategy]
+Split an algorithm in high and low level parts.
+A high level implementation would accept an instance of the low level (Strategy) via composition.
+Similar in purpose to Template.
+
+=== link:src/Template.java[Template]
+Split an algorithm in high and low level parts.
+Implement the high level as an abstract class.
+Extend high level class with low level implementations
+Similar in purpose to Strategy.
+
+=== link:src/Visitor.java[Visitor]
+Separate behaviors from data by creating a Visitor object (behavior) which visits each data object's accept method
+
+

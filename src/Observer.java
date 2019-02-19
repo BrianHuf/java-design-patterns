@@ -95,7 +95,7 @@ class Rat implements Closeable {
     }
 }
 
-class DemoObservable {
+class DemoObserver {
     public static void main(String[] args)
         throws IOException {
         Game game = new Game();
