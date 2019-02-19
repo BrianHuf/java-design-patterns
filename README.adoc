@@ -87,6 +87,10 @@ Proxy is meant to change behavior (e.g. add logging or caching).
 A chain of references that are applied in order.
 The output of the previous may be passed to the next.
 
+=== link:src/Command.java[Command]
+Instead of directly change stateful objects, create Command objects along with a CommandProcessor.
+This pattern provides a path to Undo and Redo
+
 === link:src/Composite.java[Composite]
 Use the same interface for singles and collections (e.g. Shape box and group)
 
